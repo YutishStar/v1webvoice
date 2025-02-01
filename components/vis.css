@@ -1,0 +1,193 @@
+@keyframes wobble {
+  0% {
+    transform: scaleY(1);
+  }
+
+  50% {
+    transform: scaleY(0.9);
+  }
+
+  100% {
+    transform: scaleY(1);
+  }
+}
+
+@keyframes radiate {
+  0% {
+    background-color: white;
+    filter: drop-shadow(rgb(255, 255, 255) 0px 0px 45px);
+  }
+
+  50% {
+    background-color: #ffc8a4;
+    filter: drop-shadow(ffc8a4 0px 0px 45px);
+  }
+
+  100% {
+    background-color: #fa7900;
+    filter: drop-shadow(#fa7900 0px 0px 45px);
+  }
+}
+
+.animate-wobble {
+  animation: wobble 0.3s ease-in-out infinite;
+  /* transform-origin: center bottom; */
+}
+
+.animate-radiate {
+  animation: radiate 0.5s ease-in-out infinite alternate-reverse;
+  filter: drop-shadow(rgb(255, 255, 255) 0px 0px 45px);
+}
+
+.middle {
+  width: 128px;
+  height: 128px;
+  border-radius: 50%;
+  background-color: rgb(255, 239, 186);
+  background-image: radial-gradient(
+      at 76% 31%,
+      #fa7900 0px,
+      transparent 50%
+    ),
+    radial-gradient(at 20% 81%, rgba(245, 180, 0, 0.377) 0px, transparent 100%),
+    radial-gradient(
+      at 16% 91%,
+      rgb(255, 94, 0) 0px,
+      transparent 70%
+    );
+  background-size: 300% 300%;
+  filter: drop-shadow(rgb(247, 112, 2) 0px 0px 45px);
+  transition: transform 1.25s cubic-bezier(0.09, 1.04, 0.245, 1.055);
+  box-shadow: 0px -5px 100px 100px rgba(255, 229, 142, 0.322);
+  z-index: 25;
+  animation: 20s ease 10s infinite normal none running gradient-animation,
+    2s ease-out 0s infinite alternate none running rotate-animation,
+    floating-animation 5s ease-in-out infinite;
+}
+
+/* .grad {
+  background-color: rgb(255, 239, 186);
+  animation: 20s ease 10s infinite normal none running gradient-animation,
+    2s ease-out 0s infinite alternate none running rotate-animation,
+    ;
+    transition: transform 1.25s cubic-bezier(0.09, 1.04, 0.245, 1.055);
+  background-image: radial-gradient(
+      at 76% 31%,
+      #fa7900 0px,
+      transparent 50%
+    ),
+    radial-gradient(at 20% 81%, rgba(245, 180, 0, 0.377) 0px, transparent 100%),
+    radial-gradient(
+      at 16% 91%,
+      rgb(255, 94, 0) 0px,
+      transparent 70%
+    );
+} */
+
+.inner-1,
+.inner-2 {
+  width: 128px;
+  height: 128px;
+  border-radius: 50%;
+  background: rgb(255, 204, 156);
+  transform: scale(0.8);
+  transition: transform 1s cubic-bezier(0.09, 1.04, 0.245, 1.055);
+  box-shadow: 10px 10px 10px rgba(31, 31, 31, 0.808);
+  z-index: 20;
+  position: absolute;
+}
+
+.outer-1,
+.outer-2 {
+  width: 128px;
+  height: 128px;
+  border-radius: 50%;
+  background: rgb(133, 93, 41);
+  transform: scale(0.8);
+  transition: transform 1s cubic-bezier(0.09, 1.04, 0.245, 1.055);
+  z-index: 15;
+  position: absolute;
+}
+
+.outer:hover {
+  cursor: none; 
+}
+.outer:hover > .outer-1 {
+  transform: translateX(-104px) scale(1);
+}
+
+.outer:hover > .outer-2 {
+  transform: translateX(104px) scale(1);
+}
+
+.outer:hover > .inner-1 {
+  transform: translateX(-52px) scale(1);
+}
+
+.outer:hover > .inner-2 {
+  transform: translateX(52px) scale(1);
+}
+
+.middle:hover > .middle {
+  transform: translateX(0px) scale(1.1);
+}
+
+@keyframes floating-animation {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+@keyframes gradient-animation {
+  0% {
+    background-position: 0 2%;
+  }
+  50% {
+    background-position: 100% 99%;
+  }
+  100% {
+    background-position: 0 2%;
+  }
+}
+
+@keyframes rotate-animation {
+  0% {
+    filter: drop-shadow(0 0 45px rgba(255, 255, 255, 0.5));
+  }
+  100% {
+    filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.3));
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.cur {
+  position: fixed;
+  top: 0%;
+  left: 0%;
+  /* box-shadow: 0 4px 15px #ffa50099;
+  background-color: #ffa6002c; */
+  /* width: 28px;
+  height: 28px; */
+  /* border-radius: 50%; */
+  transform: translateY(-50%, -50%);
+  z-index: 100;
+  pointer-events: none;
+}
