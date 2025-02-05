@@ -133,13 +133,13 @@ export default function Chat({ accessToken }: { accessToken: string }) {
     <VoiceProvider
       auth={{ type: "accessToken", value: accessToken }}
       configId={configId}
-      onAudioReceived={(message: AudioOutputMessage) => handleAudioReceived(message)}
+      onMessage={(message: any) => {
+        if ('data' in message) {
+          handleAudioReceived(message as AudioOutputMessage);
+        }
+      }}
     >
-      {/* <div className="p-4"> */}
-        
-        <AudioVisualizer audioData={audioData} />
-      {/* </div> */}
-      
+      <AudioVisualizer audioData={audioData} />
     </VoiceProvider>
   );
 }
